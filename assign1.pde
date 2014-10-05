@@ -10,8 +10,7 @@ int h = 50;
 // declare variables
 // --------------------------------------------
 // put your code inside here
-int totalScore = 0;
-
+int totalScore = 500;
 // --------------------------------------------
 
 void setup() {
@@ -48,8 +47,7 @@ void draw() {
       // start rolling
       // -------------------------------------------------
       // put your code inside here
-      
-      
+      totalScore -= 50;
       // -------------------------------------------------
     }
     machine.roll();
@@ -62,11 +60,40 @@ void draw() {
       // stop rolling
       // -------------------------------------------------
       // put your code inside here
+    int result = machine.probability( 1944.0/2150.0 );
+    //by using 0.9, the probabilaty of 777 will be larger than 0.1. using 1944/2150 is closer to a more accurate result
       
- 
- 
- 
-      
+   //fruit number in slot
+   // mahcine.setSlotFruit(int slotPosition, int fruitId);
+    int randA = int(random(6));
+    int randB = int(random(6));
+    int randC = int(random(6)); 
+    
+    machine.setSlotFruit(0, (randA)*result);
+    machine.setSlotFruit(1, (randB)*result);
+    machine.setSlotFruit(2, (randC)*result);
+
+  //get slot score
+  //  mahcine.getSlotScore(int slotPosition);
+  
+    int a = machine.getSlotScore(0); 
+    int b = machine.getSlotScore(1); 
+    int c = machine.getSlotScore(2); 
+    int d = machine.getSlotScore(3);
+    int e = machine.getSlotScore(4);
+    int f = machine.getSlotScore(5);
+    
+    //get fruit count
+    int m = machine.getFruitCount(0); 
+    int n = machine.getFruitCount(1); 
+    int o = machine.getFruitCount(2);
+    int p = machine.getFruitCount(3);
+    int q = machine.getFruitCount(4);
+    int r = machine.getFruitCount(5);
+   
+   http://www.ebaomonthly.com/bible/index.php
+    //total score change
+    totalScore =  totalScore + a*m*m + b*n*n + c*o*o + d*p*p + e*q*q +f*r*r;
       // -------------------------------------------------
     }
     machine.stop();
@@ -83,7 +110,6 @@ void mousePressed() {
     button = !button;
   }  
 }
-
 
 
 
